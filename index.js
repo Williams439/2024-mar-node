@@ -83,7 +83,7 @@ app.delete("/api/list/:id", (req, res) => {
       if (error) {
         res.status(500).json({ error });
       } else {
-        response.status(200).json({ status: true });
+        res.status(200).json({ status: true });
       }
     },
   );
