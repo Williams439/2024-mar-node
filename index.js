@@ -88,3 +88,21 @@ app.delete("/api/list/:id", (req, res) => {
     },
   );
 })
+
+app.put("/api/list/:id", (req, res) => {
+  db.run(
+    `
+    UPDATE ShoppingList
+    SET item =?, quantity =?
+    WHERE id =?
+  `,
+    [req.body.item, req.body.quantity, req.params.id], 
+    (error, _response) =>{
+    if (error) {
+      res.status(500).json({ error });
+      } else {
+        res.status(201).json({ status: true });
+      }
+    }
+  );
+});
